@@ -1,0 +1,4 @@
+redis-cli -h redis-19332.c1.ap-southeast-1-1.ec2.cloud.redislabs.com -p 19332 -a  ke6I4gle1B4IIyhVUalFONkD4fVL5qPf
+
+FT.CREATE idx:icd-10 ON has 
+PREFIX 1 "icd-10:" SCHEMA code TEXT SORTABLE name TEXT SORTABLE
