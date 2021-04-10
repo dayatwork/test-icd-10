@@ -4,18 +4,18 @@ import Redis from "ioredis";
 import fs from "fs";
 
 const r = new Redis({
-  port: 19332, // Redis port
-  host: "redis-19332.c1.ap-southeast-1-1.ec2.cloud.redislabs.com", // Redis host
+  port: 11608,
+  host: "redis-11608.c252.ap-southeast-1-1.ec2.cloud.redislabs.com",
   family: 4, // 4 (IPv4) or 6 (IPv6)
-  password: "ke6I4gle1B4IIyhVUalFONkD4fVL5qPf",
+  password: "6eEYrymDcjb6NRCc6Lrunpy50e3vuqko",
 });
 const p = r.pipeline();
 
-fs.createReadStream("./example.csv")
+fs.createReadStream("./ICD-10.csv")
   .pipe(csv())
   .on("data", (data) => {
     let key = `icd-10:${data.code}`;
-    p.hset(key, data.code, data.name);
+    p.hset(key, "code", data.code, "name", data.name);
   })
   .on("end", () => {
     p.exec();
